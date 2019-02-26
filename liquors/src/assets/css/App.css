@@ -10,7 +10,6 @@
 
 .App-header {
   background-color: #282c34;
-  min-height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -28,6 +27,17 @@
     transform: rotate(0deg);
   }
   to {
-    transform: rotate(360deg);
+    transform: rotate(110deg);
   }
+}
+
+
+.searchText {
+  width: 75% !important;
+  margin: auto !important;
+}
+
+.iconn {
+  width: 64px;
+  height: 64px;
 }

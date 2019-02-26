@@ -9,14 +9,16 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <header className="App-header">
+        <nav className="navbar navbar-light bg-light">
+          <a className="navbar-brand" href="/">
+            <img src={logo} className="d-inline-block align-top iconn" alt=""/>
+          </a>
+        </nav>
+        <div className="container">
           <img src={logo} className="App-logo" alt="logo" />
-          <h2>Get your liquors</h2>
-        </header>
-        <div>
           <SearchBar />
         </div>
-        <div>
+        <div className="container">
           <LiquorList/>
         </div>
       </div>
