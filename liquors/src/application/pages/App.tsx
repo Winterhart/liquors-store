@@ -4,6 +4,7 @@ import '../../assets/css/App.css';
 import {SearchBar} from '../components/search/SearchBar';
 import {LiquorList} from '../components/liquor/LiquorList';
 
+
 class App extends Component {
   render() {
     return (
