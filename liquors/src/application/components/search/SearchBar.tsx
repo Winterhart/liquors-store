@@ -33,6 +33,7 @@ export class SearchBar extends React.Component<{}, SearchBarState> {
     render(){
         return(
             <div className="SearchBar">
+            <h3>Search</h3>
             <form onSubmit={this.handleSubmit}> 
                 
             <label>
