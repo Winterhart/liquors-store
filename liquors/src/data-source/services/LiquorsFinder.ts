@@ -1,10 +1,6 @@
 import axios from 'axios'
 
 
-export interface RawLiquorObj {
-    liq: Object
-}
-
 export function getLiquors(textSearch: string){
     const requestURL = buildURI()  + textSearch;
     axios.request({
