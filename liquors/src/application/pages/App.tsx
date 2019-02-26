@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
-import logo from '../../assets/images/logo.svg';
+import logo from '../../assets/images/liquors-store.svg';
 import '../../assets/css/App.css';
+import {SearchBar} from '../components/search/SearchBar';
+import {LiquorList} from '../components/liquor/LiquorList';
 
 class App extends Component {
   render() {
@@ -12,15 +14,13 @@ class App extends Component {
             Hi Edit <code>src/App.tsx</code> and save to reload.
           </p>
           <h2>Get your liquors</h2>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
         </header>
+        <div>
+          <SearchBar/>
+        </div>
+        <div>
+          <LiquorList/>
+        </div>
       </div>
     );
   }
