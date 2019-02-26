@@ -1,0 +1,10 @@
+
+Select all product from country:
+
+search?access_token=XXXXXXX&q=@tppays=("Mongolie", "Russie")
+
+
+Select all product from country mongolie, russie with
+format 750 ml
+
+search?access_token=XXXXXXXXXXX&q=@tppays=("Mongolie", "Russie")@tpformat="750 ml"
