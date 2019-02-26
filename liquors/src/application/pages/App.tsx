@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+import logo from '../../assets/images/logo.svg';
+import '../../assets/css/App.css';
 
 class App extends Component {
   render() {
@@ -11,6 +11,7 @@ class App extends Component {
           <p>
             Hi Edit <code>src/App.tsx</code> and save to reload.
           </p>
+          <h2>Get your liquors</h2>
           <a
             className="App-link"
             href="https://reactjs.org"
