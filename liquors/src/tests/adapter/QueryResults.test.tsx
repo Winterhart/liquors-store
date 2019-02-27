@@ -10,7 +10,6 @@ describe('Adapter Testing', () =>{
     it('Testing QueryResult Adapter', () => {
         const converter: QueryResultMapper = new QueryResultMapper();
         const results: QueryResult = converter.convertToDomainObj(rawJSON);
-        debugger;
         const condition: boolean =
             (results.numberOfResult === 44 &&
                 results.queryResponseTime == 102 &&

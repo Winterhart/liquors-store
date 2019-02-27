@@ -56,3 +56,17 @@
 .cardContainer {
   margin-bottom: 40px;
 }
+
+.Collapsible {
+    border: black;
+    border-width: medium;
+    border-style: solid;
+    padding: 5px;
+    border-radius: 22px;
+
+    cursor:pointer;
+}
+
+.app-section {
+    margin-bottom:50px;
+}
