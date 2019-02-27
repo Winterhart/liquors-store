@@ -19,7 +19,7 @@ export class LiquorList extends React.Component<LiquorListProps, {}> {
 
     render(){
         return (
-            <div className="container">
+            <div className="row">
                 {this.props.queryData.Liquors.map(
                     l => <LiquorCard key={l.name} Liquor={l} />
                 )}

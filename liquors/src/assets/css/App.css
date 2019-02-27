@@ -42,7 +42,17 @@
   height: 64px;
 }
 
+.LiquorCard {
+}
+
 .LiquorImage {
-  max-width:200px;
   margin:auto;
+}
+
+.fixed-container {
+  padding:10px;
+}
+
+.cardContainer {
+  margin-bottom: 40px;
 }

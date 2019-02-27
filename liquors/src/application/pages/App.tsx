@@ -36,7 +36,7 @@ class App extends React.Component<{}, ApplicationState> {
           <img src={logo} className="App-logo" alt="logo" />
           <SearchBar callBack={this.queryCallback} />
         </div>
-        <div className="container">
+        <div className="container-fluid">
           <LiquorList queryData={this.state.queryResults}/>
         </div>
       </div>
