@@ -22,14 +22,11 @@ export class SearchBar extends React.Component<any,SearchBarState> {
 
     handleSubmit(event){
         event.preventDefault();
-        console.log("search for: ");
-        console.log(this.state.searchText);
         let searchingText : string = this.state.searchText;
         const adapter : QueryResultMapper = new 
             QueryResultMapper();
         getLiquors(searchingText).then(res => {
             const queryResult : QueryResult = adapter.convertToDomainObj(res.data);
-            console.log(queryResult);
             this.props.callBack(queryResult);
         });
         //this.props.callBack(results);
