@@ -1,19 +1,16 @@
 import React from 'react'
 import {getLiquors} from '../../../data-source/services/LiquorsFinder';
 import { QueryResult } from '../../../domain/model/QueryResult';
+import {SearchBarState} from '../../state/SearchBarState';
+import {QueryResultMapper} from '../../../domain/adapters/QueryResultMapper';
 
-export interface SearchBarState {
-    searchText : string
-}
-
-export class SearchBar extends React.Component<{}, SearchBarState> {
+export class SearchBar extends React.Component<any,SearchBarState> {
 
     constructor(props){
         super(props);
         this.state = {
             searchText: ''
         };
-        
         this.handleTextChange = this.handleTextChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
 
@@ -27,8 +24,15 @@ export class SearchBar extends React.Component<{}, SearchBarState> {
         event.preventDefault();
         console.log("search for: ");
         console.log(this.state.searchText);
-        let searchingText = this.state.searchText;
-        let results : QueryResult =  getLiquors(searchingText);
+        let searchingText : string = this.state.searchText;
+        const adapter : QueryResultMapper = new 
+            QueryResultMapper();
+        getLiquors(searchingText).then(res => {
+            const queryResult : QueryResult = adapter.convertToDomainObj(res.data);
+            console.log(queryResult);
+            this.props.callBack(queryResult);
+        });
+        //this.props.callBack(results);
     }
 
     render(){

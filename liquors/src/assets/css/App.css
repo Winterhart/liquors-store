@@ -41,3 +41,8 @@
   width: 64px;
   height: 64px;
 }
+
+.LiquorImage {
+  max-width:200px;
+  margin:auto;
+}

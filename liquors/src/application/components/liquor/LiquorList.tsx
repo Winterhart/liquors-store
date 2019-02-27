@@ -1,10 +1,29 @@
 import React from 'react'
+import { QueryResult } from '../../../domain/model/QueryResult';
+import { LiquorCard } from './LiquorCard'
 
-export class LiquorList extends React.Component{
+export interface LiquorListProps {
+    queryData : QueryResult;
+}
+
+export class LiquorList extends React.Component<LiquorListProps, {}> {
+
+    constructor(props: LiquorListProps){
+        super(props);
+        const numberOfResult : number = props.queryData.numberOfResult;
+        console.log("results: ");
+        console.log(numberOfResult);
+    }
+
+
 
     render(){
         return (
-            <p>...Liquor List...</p>
+            <div className="container">
+                {this.props.queryData.Liquors.map(
+                    l => <LiquorCard key={l.name} Liquor={l} />
+                )}
+            </div>
         )
     }
 }

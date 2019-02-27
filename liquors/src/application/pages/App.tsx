@@ -3,9 +3,27 @@ import logo from '../../assets/images/liquors-store.svg';
 import '../../assets/css/App.css';
 import {SearchBar} from '../components/search/SearchBar';
 import {LiquorList} from '../components/liquor/LiquorList';
+import { QueryResult } from '../../domain/model/QueryResult';
+import { ApplicationInitialState } from '../state/AppInitialState';
+import {ApplicationState} from '../state/ApplicationState';
 
 
-class App extends Component {
+
+
+class App extends React.Component<{}, ApplicationState> {
+
+  constructor(props){
+    super(props);
+    const initState : ApplicationInitialState = new ApplicationInitialState(); 
+    this.state = {
+      queryResults : initState.query
+    }
+  }
+
+  queryCallback = (dataFromSearchBar) => {
+    this.setState({queryResults: dataFromSearchBar})
+  }
+
   render() {
     return (
       <div className="App">
@@ -16,10 +34,10 @@ class App extends Component {
         </nav>
         <div className="container">
           <img src={logo} className="App-logo" alt="logo" />
-          <SearchBar />
+          <SearchBar callBack={this.queryCallback} />
         </div>
         <div className="container">
-          <LiquorList/>
+          <LiquorList queryData={this.state.queryResults}/>
         </div>
       </div>
     );

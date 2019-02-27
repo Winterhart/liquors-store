@@ -17,14 +17,10 @@ describe('Adapter Testing', () =>{
                 results.Liquors.length ==10)
         
         for(let index = 0; index <  results.Liquors.length; index++){
-            console.log(index);
+
             const liquor : Liquor = results.Liquors[index];
             const liqDetails : LiquorDetails = liquor.details;
             const liqProd : LiquorProductor = liqDetails.productor;
-
-            console.log(liquor);
-            console.log(liqDetails);
-            console.log(liqProd);
 
             if(index === 9){
                 expect(liqProd.country).toEqual('Canada');
