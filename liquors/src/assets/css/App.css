@@ -10,7 +10,6 @@
 
 .App-header {
   background-color: #282c34;
-  min-height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -28,6 +27,46 @@
     transform: rotate(0deg);
   }
   to {
-    transform: rotate(360deg);
+    transform: rotate(110deg);
   }
+}
+
+
+.searchText {
+  width: 75% !important;
+  margin: auto !important;
+}
+
+.iconn {
+  width: 64px;
+  height: 64px;
+}
+
+.LiquorCard {
+}
+
+.LiquorImage {
+  margin:auto;
+}
+
+.fixed-container {
+  padding:10px;
+}
+
+.cardContainer {
+  margin-bottom: 40px;
+}
+
+.Collapsible {
+    border: black;
+    border-width: medium;
+    border-style: solid;
+    padding: 5px;
+    border-radius: 22px;
+
+    cursor:pointer;
+}
+
+.app-section {
+    margin-bottom:50px;
 }
