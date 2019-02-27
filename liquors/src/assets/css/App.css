@@ -70,3 +70,18 @@
 .app-section {
     margin-bottom:50px;
 }
+
+.emptyResults{
+min-height: 200px;
+}
+
+.h3{
+  margin-bottom: 50px !important;
+}
+
+.btn-primary {
+  margin-top:30px !important;
+  margin-bottom: 50px !important;
+  min-width: 100px;
+  min-height: 50px;
+}

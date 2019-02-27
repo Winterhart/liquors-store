@@ -10,7 +10,6 @@ export class LiquorList extends React.Component<LiquorListProps, {}> {
 
     constructor(props: LiquorListProps){
         super(props);
-        const numberOfResult : number = props.queryData.numberOfResult;
     }
 
     createIdFromName(name: string): string{
@@ -20,10 +19,17 @@ export class LiquorList extends React.Component<LiquorListProps, {}> {
 
     render(){
         return (
-            <div className="row">
-                {this.props.queryData.Liquors.map(
-                    l => <LiquorCard key={this.createIdFromName(l.name)} Liquor={l} LiquorId={this.createIdFromName(l.name)} />
-                )}
+            <div>
+                <div className="numberResults alert alert-success" role="alert">
+                    We found <span> </span> 
+                        <b>{this.props.queryData.numberOfResult}</b>
+                        <span> </span> item. 
+                </div>
+                <div className="row">
+                    {this.props.queryData.Liquors.map(
+                        l => <LiquorCard key={this.createIdFromName(l.name)} Liquor={l} LiquorId={this.createIdFromName(l.name)} />
+                    )}
+                </div>
             </div>
         )
     }
