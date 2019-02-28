@@ -8,3 +8,40 @@ Select all product from country mongolie, russie with
 format 750 ml
 
 search?access_token=XXXXXXXXXXX&q=@tppays=("Mongolie", "Russie")@tpformat="750 ml"
+
+How to get more than 10 resuts or next page ?
+
+
+
+We can send the same request inside a POST with a body using HEADER
+Bearer with our token...
+HEADER:
+Bearer: XXXX-XXXX-XXX
+
+body :
+
+{
+    "q":"champagne"
+}
+
+
+To get more results we can use 
+{
+    "q":"champagne"
+    "numberOfResults":20
+}
+
+
+In an "I am feeling lucky search", we can use 
+{
+    "lqPartialMatchKeywords":"champogne"
+}
+
+HOW DO WE PAGINATE ???
+
+{
+	"q":"champagne",
+	"numberOfResults":10,
+	"displayMoreResults":10
+}
+

@@ -6,7 +6,7 @@ import {LiquorList} from '../components/liquor/LiquorList';
 import { ApplicationInitialState } from '../state/AppInitialState';
 import {ApplicationState} from '../state/ApplicationState';
 import {AdvanceSearch} from '../components/search/AdvanceSearch';
-
+import {EmptyResults} from '../components/common/EmptyResults';
 
 
 class App extends React.Component<{}, ApplicationState> {
@@ -24,6 +24,7 @@ class App extends React.Component<{}, ApplicationState> {
   }
 
   render() {
+    const hasResults : boolean = this.state.queryResults.numberOfResult > 0;
     return (
       <div className='App'>
         <nav className='navbar navbar-light bg-light'>
@@ -39,7 +40,8 @@ class App extends React.Component<{}, ApplicationState> {
         <AdvanceSearch />
         </div>
         <div className='container-fluid app-section'>
-          <LiquorList queryData={this.state.queryResults}/>
+          {hasResults ? (<LiquorList queryData={this.state.queryResults} />) : (<EmptyResults/>) }
+          
         </div>
       </div>
     );
