@@ -11,7 +11,8 @@ export class SearchPanel extends React.Component<any, SearchParamState >{
         this.state = {
             isAdvActive : false,
             searchText: '',
-            numberOfResult: 10
+            numberOfResult: 10,
+            priceRange: [0,999]
         }
     }
     

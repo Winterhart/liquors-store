@@ -54,4 +54,49 @@ User wants Champagne, 25 results, from France
 	"tppays": "France"
 }
 
+{
+	"q":"malbec",
+	"aq":"@tpregion==\"Valle Central\" AND/OR @tppays==(\"argentine\", \"chili\")"
 
+}
+
+Other useful option:
+"partialMatch": true,
+"sortCriteria": "Relevancy"
+"enableDidYouMean": true,
+"partialMatch": true
+
+
+{
+	"q":"malbec",
+	"aq":"@tpprixbande==(\"30$-40$\") AND @tppays==(\"France\") AND @score>2000"
+}
+
+
+Max-Min Price
+
+{
+	"q":"malbec",
+	"aq":"@tpprixnum=10..15"
+}
+
+
+Category
+
+{
+	"q":"malbec",
+	"aq":"@tpcategorie==\"Vin rouge\""
+}
+
+	"aq":"@tpcategorie==\"vin rosé\""
+
+Availability
+
+{
+	"aq":"@tpdisponibilite==(\"En Ligne\", \"En Succursale\")"
+}
+
+En Succursale
+En Ligne
+
+Bientôt disponibl

@@ -3,5 +3,10 @@ export interface SearchParamState {
     searchText : string,
     numberOfResult : number,
     country? : string[],
+    priceMax?: number,
+    priceMin?: number,
+    categorie?:string,
+    isAvailable?:boolean,
+    priceRange: number[]
     
 }

@@ -85,3 +85,8 @@ min-height: 200px;
   min-width: 100px;
   min-height: 50px;
 }
+
+.criteria-box{
+    margin-top: 30px;
+    margin-bottom: 30px;
+}

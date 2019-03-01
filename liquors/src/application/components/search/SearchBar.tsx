@@ -1,5 +1,5 @@
 import React from 'react'
-import {getLiquors} from '../../../data-source/services/LiquorsFinder';
+import { LiquorsFinder} from '../../../data-source/services/LiquorsFinder';
 import { QueryResult } from '../../../domain/model/QueryResult';
 import {QueryResultMapper} from '../../../domain/adapters/QueryResultMapper';
 import { SearchParamState } from '../../state/SearchParamState';
@@ -11,7 +11,8 @@ export class SearchBar extends React.Component<any,SearchParamState> {
         this.state = {
             isAdvActive: false,
             searchText: '',
-            numberOfResult: 10
+            numberOfResult: 10,
+            priceRange: [0,999]
         };
         this.handleTextChange = this.handleTextChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
@@ -23,11 +24,16 @@ export class SearchBar extends React.Component<any,SearchParamState> {
     }
 
     handleSubmit(event){
+        const finder : LiquorsFinder = new LiquorsFinder();
         event.preventDefault();
-        let searchingText : string = this.state.searchText;
         const adapter : QueryResultMapper = new 
             QueryResultMapper();
-        getLiquors(searchingText).then(res => {
+        this.setState({
+            numberOfResult: 20,
+            country: ['France', 'Allemagne']
+            
+        })
+        finder.findLiquors(this.state).then(res => {
             const queryResult : QueryResult = adapter.convertToDomainObj(res.data);
             this.props.callBack(queryResult);
         });
