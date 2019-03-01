@@ -3,7 +3,6 @@ import { LiquorDetails } from '../../../domain/model/LiquorDetails';
 
 export interface LiquorDetailsProps {
     details : LiquorDetails
-    price: number;
 }
 
 export class LiquorDetailSection extends React.Component<LiquorDetailsProps, {}>{
@@ -15,9 +14,6 @@ export class LiquorDetailSection extends React.Component<LiquorDetailsProps, {}>
     render(){
         return(
             <ul className="list-group list-group-flush">
-                <li className="list-group-item">
-                    <b>Price:</b><span> </span>{this.props.price}<b>$</b>
-                </li>
                 <li className="list-group-item">
                     <b>Available:</b><span> </span>{this.props.details.available}
                 </li>

@@ -37,14 +37,15 @@ export class SearchPanel extends React.Component<any, SearchParamState >{
                 <div className="list-group-horizontal row" >
                     <div className="col-md-6">
                         <a
-                            className="list-group-item btn btn-info"
+                            className="list-group-item btn btn-info regular"
                             onClick={this.renderSearchPanel}>
                             Search
                         </a>
                     </div>
                     <div className="col-md-6">
                         <a
-                            className="list-group-item btn btn-info"
+                            
+                            className="list-group-item btn btn-info adv"
                             onClick={this.renderAdvSearchPanel}>
                             Advanced Search
                         </a>

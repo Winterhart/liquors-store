@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import logo from '../../assets/images/liquors-store.svg';
 import '../../assets/css/App.css';
 import {LiquorList} from '../components/liquor/LiquorList';
@@ -6,6 +6,7 @@ import { ApplicationInitialState } from '../state/AppInitialState';
 import {ApplicationState} from '../state/ApplicationState';
 import {EmptyResults} from '../components/common/EmptyResults';
 import { SearchPanel } from '../components/search/SearchPanel';
+import 'rc-slider/assets/index.css';
 
 class App extends React.Component<{}, ApplicationState> {
 

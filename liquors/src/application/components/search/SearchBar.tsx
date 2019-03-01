@@ -28,16 +28,10 @@ export class SearchBar extends React.Component<any,SearchParamState> {
         event.preventDefault();
         const adapter : QueryResultMapper = new 
             QueryResultMapper();
-        this.setState({
-            numberOfResult: 20,
-            country: ['France', 'Allemagne']
-            
-        })
         finder.findLiquors(this.state).then(res => {
             const queryResult : QueryResult = adapter.convertToDomainObj(res.data);
             this.props.callBack(queryResult);
         });
-        //this.props.callBack(results);
     }
 
     render(){

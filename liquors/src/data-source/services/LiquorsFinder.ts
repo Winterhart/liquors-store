@@ -13,10 +13,7 @@ interface requestBody {
 export class LiquorsFinder {
 
     public findLiquors(params: SearchParamState){
-        params.country = ['Allemagne'];
         const body : requestBody = this.bodyBuilder(params);
-        console.log('body');
-        console.log(body);
         return axios.request({
             url: "https://cloudplatform.coveo.com/rest/search",
             method: 'post',
@@ -40,15 +37,89 @@ export class LiquorsFinder {
     }
 
     private advanceQueryBuilder(parameters: SearchParamState) : string{
-
+        //TODO: Refactor this
         let adv : string = '';
+
+        //Handle Country
         if (parameters.country !== undefined && parameters.country.length > 0) {
-            adv = this.encapsulateAdvTerm(SearchCriteriaMapping.country, parameters.country);
+            adv = this.encapsulateAdvTerm(SearchCriteriaMapping.country, [parameters.country]);
         }
 
 
-        
+        //Handle search with price
+        let priceRange : string = parameters.priceRange[0] + '..' + parameters.priceRange[1];
+        if(adv.length > 0){
+            adv = adv + " AND " + this.encapsulateAdvTerm(SearchCriteriaMapping.price, [priceRange]);
+        }else{
+            adv = this.encapsulateAdvTerm(SearchCriteriaMapping.price, [priceRange]);
+        } 
 
+        //Handle Availability
+        if(parameters.isAvailable != undefined && parameters.isAvailable != null){
+            let availabilityCriteria : string[] = [];
+            if(parameters.isAvailable){
+                availabilityCriteria.push(SearchCriteriaMapping.inStore);
+                availabilityCriteria.push(SearchCriteriaMapping.online);
+            }else{
+                availabilityCriteria.push(SearchCriteriaMapping.comingSoon);
+            }
+
+            if (adv.length > 0) {
+                adv = adv + " AND " + this.encapsulateAdvTerm(SearchCriteriaMapping.disponibility, availabilityCriteria);
+            } else {
+                adv = this.encapsulateAdvTerm(SearchCriteriaMapping.disponibility, availabilityCriteria);
+            } 
+        }
+
+        //Handle Category
+        if (parameters.categorie != undefined && parameters.categorie != null) {
+            let categorieCriteria: string[] = [];
+            if (parameters.categorie === 'Wine') {
+                categorieCriteria.push('Vin rouge');
+                categorieCriteria.push('Vin Blanc');
+                categorieCriteria.push('Vin Rosé');
+
+            } else if(parameters.categorie === 'Beer' ) {
+                //TODO: Refactor this... 
+                categorieCriteria.push('Bière');
+
+                categorieCriteria.push('Bière ambrée de type Ale');
+                categorieCriteria.push('Bière blonde de type Ale');
+                categorieCriteria.push('Bière brune de type Ale');
+                categorieCriteria.push('Bière noire de type Ale');
+                categorieCriteria.push('Bière dorée de type Ale');
+                categorieCriteria.push('Bière blanche de type Ale');
+                categorieCriteria.push('Bière rousse de type Ale');
+
+
+                categorieCriteria.push('Bière dorée de type Lager');
+                categorieCriteria.push('Bière rousse de type Lager');
+                categorieCriteria.push('Bière ambrée de type Lager');
+                categorieCriteria.push('Bière blonde de type Lager');
+                categorieCriteria.push('Bière brune de type Lager');
+                categorieCriteria.push('Bière noire de type Lager');
+                categorieCriteria.push('Bière blanche de type Lager');
+
+                categorieCriteria.push('Bière dorée de type spontanée');
+                categorieCriteria.push('Bière rousse de type spontanée');
+                categorieCriteria.push('Bière ambrée de type spontanée');
+                categorieCriteria.push('Bière blonde de type spontanée');
+                categorieCriteria.push('Bière brune de type spontanée');
+                categorieCriteria.push('Bière noire de type spontanée');
+                categorieCriteria.push('Bière blanche de type spontanée');
+                
+            }else{
+                categorieCriteria.push('spitueux');
+            }
+
+            if (adv.length > 0) {
+                adv = adv + " AND " + 
+                this.encapsulateAdvTerm(SearchCriteriaMapping.category, categorieCriteria);
+            } else {
+                adv =
+                 this.encapsulateAdvTerm(SearchCriteriaMapping.category, categorieCriteria);
+            }
+        }
 
         return adv;
     }
@@ -65,7 +136,6 @@ export class LiquorsFinder {
         }
 
         buildString = buildString.substr(0, buildString.length-1);
-        console.log(buildString);
 
         return buildString;
     }
