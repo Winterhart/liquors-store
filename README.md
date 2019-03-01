@@ -8,15 +8,17 @@ One of my goal is to build a product fully responsive and usable on mobiles.
 
 ### PC 
 
-![alt text](https://github.com/Winterhart/liquors-store/blob/master/docs/liquors-store.gif "store")
+![alt text](https://github.com/Winterhart/liquors-store/blob/master/docs/LiquorsPC.gif "store")
 
 
 **flow:**
 - Navigate to home page
-- Search for 'champagne'
-- Navigate to *details*, click on *details*
-- Navigate to *productor details*, click on *productor details*
-- Press on *Buy Now!*
+- Check the two panel Advance Search, Regular Search
+- First Search 'biere' in Advance Search panel
+- Add criteria from: 'Belgique'
+- Verify its from the right country
+- Add criteria load: '50'
+- Navigate through results
 
 
 ### Mobile
@@ -56,5 +58,24 @@ The no-docker way
 To run the test
 
 `>npm test`
+
+## Software Architecture
+
+- application: all UI, components, page, props and states
+- assets: all assets, CSS and image...
+- domain: data models and data adapter
+- data-source: all transaction with back-end finder, TDG
+
+
+## Next Feature
+
+- Query Builder for data-source and finders
+- Load more button
+- Load with/without images
+- Pagination and next/previous page
+- Sort Panel let's sort by price, score...
+- Automatic error correction based on API tool recommendation
+
+
 
 

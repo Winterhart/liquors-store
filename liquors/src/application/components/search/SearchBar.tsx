@@ -1,15 +1,18 @@
 import React from 'react'
-import {getLiquors} from '../../../data-source/services/LiquorsFinder';
+import { LiquorsFinder} from '../../../data-source/services/LiquorsFinder';
 import { QueryResult } from '../../../domain/model/QueryResult';
-import {SearchBarState} from '../../state/SearchBarState';
 import {QueryResultMapper} from '../../../domain/adapters/QueryResultMapper';
+import { SearchParamState } from '../../state/SearchParamState';
 
-export class SearchBar extends React.Component<any,SearchBarState> {
+export class SearchBar extends React.Component<any,SearchParamState> {
 
     constructor(props){
         super(props);
         this.state = {
-            searchText: ''
+            isAdvActive: false,
+            searchText: '',
+            numberOfResult: 10,
+            priceRange: [0,999]
         };
         this.handleTextChange = this.handleTextChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
@@ -21,20 +24,19 @@ export class SearchBar extends React.Component<any,SearchBarState> {
     }
 
     handleSubmit(event){
+        const finder : LiquorsFinder = new LiquorsFinder();
         event.preventDefault();
-        let searchingText : string = this.state.searchText;
         const adapter : QueryResultMapper = new 
             QueryResultMapper();
-        getLiquors(searchingText).then(res => {
+        finder.findLiquors(this.state).then(res => {
             const queryResult : QueryResult = adapter.convertToDomainObj(res.data);
             this.props.callBack(queryResult);
         });
-        //this.props.callBack(results);
     }
 
     render(){
         return(
-            <div className="SearchBar">
+            <div className="SearchBar container-fluid">
                 <h3 className="h3">Search Liquors</h3>
             <div className="mx-auto">
                     <form onSubmit={this.handleSubmit}>
