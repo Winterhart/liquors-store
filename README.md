@@ -22,7 +22,7 @@ One of my goal is to build a product fully responsive and usable on mobiles.
 
 
 ### Mobile
-![alt text](https://github.com/Winterhart/liquors-store/blob/master/docs/mobile.gif "store")
+![alt text](https://github.com/Winterhart/liquors-store/blob/master/docs/mobile2.gif "store")
 
 
 **flow:**
