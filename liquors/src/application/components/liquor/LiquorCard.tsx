@@ -25,8 +25,10 @@ export class LiquorCard extends React.Component<LiquorCardProps, {}> {
                     <div className="card-body">
                     <h5 className="card-title">{this.props.Liquor.name}</h5>
                     <br/>
+                    <h6 className="card-subtitle text-muted"><b>Price:</b><span> </span>{this.props.Liquor.price}<b>$</b></h6>
+                    <br/>
                     <Collapse className="collapseButton" trigger="Liquor Details">
-                            <LiquorDetailSection details={this.props.Liquor.details} price={this.props.Liquor.price} />
+                            <LiquorDetailSection details={this.props.Liquor.details} />
                     </Collapse>
                     <br/>
                     <Collapse className="collapseButton" trigger="Productor Details">
