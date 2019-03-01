@@ -8,7 +8,7 @@ One of my goal is to build a product fully responsive and usable on mobiles.
 
 ### PC 
 
-![alt text](https://github.com/Winterhart/liquors-store/blob/master/docs/liquorsPC.gif "store")
+![alt text](https://github.com/Winterhart/liquors-store/blob/master/docs/LiquorsPC.gif "store")
 
 
 **flow:**
