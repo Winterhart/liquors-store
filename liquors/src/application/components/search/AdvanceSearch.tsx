@@ -1,14 +1,56 @@
-import React from 'react'
+import React from 'react';
+import { SearchParamState } from '../../state/SearchParamState';
+import { QueryResult } from '../../../domain/model/QueryResult';
+import { QueryResultMapper } from '../../../domain/adapters/QueryResultMapper';
+import { getLiquors } from '../../../data-source/services/LiquorsFinder';
 
-export class AdvanceSearch extends React.Component {
 
-    constructor(props){
-        super(props)
+export class AdvanceSearch extends React.Component<any,SearchParamState> {
+
+    constructor(props) {
+        super(props);
+        this.state = {
+            isAdvActive: false,
+            searchText: '',
+            numberOfResult: 10
+        };
+        this.handleTextChange = this.handleTextChange.bind(this);
+        this.handleSubmit = this.handleSubmit.bind(this);
+
     }
 
-    render(){
-        return(
-            <h3>Advance Search</h3>
+    handleTextChange(event) {
+        this.setState({ searchText: event.target.value });
+    }
+
+    handleSubmit(event) {
+        event.preventDefault();
+        let searchingText: string = this.state.searchText;
+        const adapter: QueryResultMapper = new
+            QueryResultMapper();
+        getLiquors(searchingText).then(res => {
+            const queryResult: QueryResult = adapter.convertToDomainObj(res.data);
+            this.props.callBack(queryResult);
+        });
+    }
+
+    render() {
+        return (
+            <div className="SearchBar container-fluid">
+                <h3 className="h3">Advance Search Liquors</h3>
+                <div className="mx-auto">
+                    <form onSubmit={this.handleSubmit}>
+                        <div className="form-group">
+                            <input type='text' className="searchText form-control" value={this.state.searchText} onChange={this.handleTextChange} />
+                        </div>
+                        <button className="btn btn-primary" type='submit' onClick={this.handleSubmit}>
+                            Search
+                        </button>
+                    </form>
+                </div>
+
+
+            </div>
         )
     }
 } 

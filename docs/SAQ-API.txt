@@ -45,3 +45,13 @@ HOW DO WE PAGINATE ???
 	"displayMoreResults":10
 }
 
+
+Example of a body for a query
+User wants Champagne, 25 results, from France
+{
+	"q":"champagne",
+	"numberOfResults": 25,
+	"tppays": "France"
+}
+
+

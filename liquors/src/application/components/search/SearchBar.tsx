@@ -1,15 +1,17 @@
 import React from 'react'
 import {getLiquors} from '../../../data-source/services/LiquorsFinder';
 import { QueryResult } from '../../../domain/model/QueryResult';
-import {SearchBarState} from '../../state/SearchBarState';
 import {QueryResultMapper} from '../../../domain/adapters/QueryResultMapper';
+import { SearchParamState } from '../../state/SearchParamState';
 
-export class SearchBar extends React.Component<any,SearchBarState> {
+export class SearchBar extends React.Component<any,SearchParamState> {
 
     constructor(props){
         super(props);
         this.state = {
-            searchText: ''
+            isAdvActive: false,
+            searchText: '',
+            numberOfResult: 10
         };
         this.handleTextChange = this.handleTextChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
@@ -34,7 +36,7 @@ export class SearchBar extends React.Component<any,SearchBarState> {
 
     render(){
         return(
-            <div className="SearchBar">
+            <div className="SearchBar container-fluid">
                 <h3 className="h3">Search Liquors</h3>
             <div className="mx-auto">
                     <form onSubmit={this.handleSubmit}>

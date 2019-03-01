@@ -1,13 +1,11 @@
 import React, { Component } from 'react';
 import logo from '../../assets/images/liquors-store.svg';
 import '../../assets/css/App.css';
-import {SearchBar} from '../components/search/SearchBar';
 import {LiquorList} from '../components/liquor/LiquorList';
 import { ApplicationInitialState } from '../state/AppInitialState';
 import {ApplicationState} from '../state/ApplicationState';
-import {AdvanceSearch} from '../components/search/AdvanceSearch';
 import {EmptyResults} from '../components/common/EmptyResults';
-
+import { SearchPanel } from '../components/search/SearchPanel';
 
 class App extends React.Component<{}, ApplicationState> {
 
@@ -34,10 +32,7 @@ class App extends React.Component<{}, ApplicationState> {
         </nav>
         <div className='container app-section'>
           <img src={logo} className='App-logo' alt='logo' />
-          <SearchBar callBack={this.queryCallback} />
-        </div>
-        <div className='container app-section'>
-        <AdvanceSearch />
+          <SearchPanel callbackRelay={this.queryCallback} />
         </div>
         <div className='container-fluid app-section'>
           {hasResults ? (<LiquorList queryData={this.state.queryResults} />) : (<EmptyResults/>) }
