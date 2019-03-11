@@ -6,6 +6,8 @@ One of my goal is to build a product fully responsive and usable on mobiles.
 
 ## Demo
 
+The website is available at: https://liquors-store.appspot.com/
+
 ### PC 
 
 ![alt text](https://github.com/Winterhart/liquors-store/blob/master/docs/LiquorsPC.gif "store")
