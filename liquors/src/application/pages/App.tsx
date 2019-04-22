@@ -21,7 +21,7 @@ class App extends React.Component<{}, ApplicationState> {
   queryCallback = (dataFromSearchBar) => {
     this.setState({queryResults: dataFromSearchBar})
   }
-
+  //TODO: Reduce props drilling by adding an application store
   render() {
     const hasResults : boolean = this.state.queryResults.numberOfResult > 0;
     return (
