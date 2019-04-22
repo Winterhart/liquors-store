@@ -1,8 +1,6 @@
 import React from 'react'
-import { LiquorsFinder} from '../../../data-source/services/LiquorsFinder';
-import { QueryResult } from '../../../domain/model/QueryResult';
-import {QueryResultMapper} from '../../../domain/adapters/QueryResultMapper';
 import { SearchParamState } from '../../state/SearchParamState';
+import {GetLiquorsEvent} from '../../../domain/event/GetLiquorsEvent'
 
 export class SearchBar extends React.Component<any,SearchParamState> {
 
@@ -20,18 +18,14 @@ export class SearchBar extends React.Component<any,SearchParamState> {
     }
     
     handleTextChange(event){
+        event.preventDefault()
         this.setState({searchText: event.target.value});
     }
 
     handleSubmit(event){
-        const finder : LiquorsFinder = new LiquorsFinder();
-        event.preventDefault();
-        const adapter : QueryResultMapper = new 
-            QueryResultMapper();
-        finder.findLiquors(this.state).then(res => {
-            const queryResult : QueryResult = adapter.convertToDomainObj(res.data);
-            this.props.callBack(queryResult);
-        });
+        event.preventDefault()
+        const getLiquorsEvent : GetLiquorsEvent = new GetLiquorsEvent();
+        getLiquorsEvent.gatherLiquors(this.state, this.props)
     }
 
     render(){

@@ -1,11 +1,9 @@
 import React from 'react';
 import { SearchParamState } from '../../state/SearchParamState';
-import { QueryResult } from '../../../domain/model/QueryResult';
-import { QueryResultMapper } from '../../../domain/adapters/QueryResultMapper';
-import { LiquorsFinder } from '../../../data-source/services/LiquorsFinder';
 import {Range} from 'rc-slider';
 import {CountryList} from '../common/CountryList';
 import {SelectOption} from '../common/SelectOption';
+import { GetLiquorsEvent } from '../../../domain/event/GetLiquorsEvent'
 
 
 export class AdvanceSearch extends React.Component<any,SearchParamState> {
@@ -28,15 +26,9 @@ export class AdvanceSearch extends React.Component<any,SearchParamState> {
     }
 
     handleSubmit(event) {
-        const finder: LiquorsFinder = new LiquorsFinder();
-        event.preventDefault();
-        const adapter: QueryResultMapper = new
-            QueryResultMapper();
-        finder.findLiquors(this.state).then(res => {
-            const queryResult: QueryResult = adapter.convertToDomainObj(res.data);
-            this.props.callBack(queryResult);
-        });
-        
+        event.preventDefault()
+        const getLiquorsEvent: GetLiquorsEvent = new GetLiquorsEvent();
+        getLiquorsEvent.gatherLiquors(this.state, this.props)
     }
 
     handlePriceChange = (data) => {
