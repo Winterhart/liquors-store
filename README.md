@@ -4,9 +4,6 @@ Based on coding challenge, Liquors Store Catalog.
 A front-end application with React, Typescript and NodeJS made to display wine, beer and other brevages. 
 One of my goal is to build a product fully responsive and usable on mobiles.
 
-## Demo
-
-The website is available at: https://liquors-store.appspot.com/
 
 ### PC 
 
